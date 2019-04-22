@@ -62,9 +62,25 @@ namespace Sorting
 
             if (!error)
             {
-                view.Print(elements);
-                this.model.SetElementList(elements);
-                Console.WriteLine("Numbers correctly set.");
+                Console.WriteLine("Set sorting method by typing one of the letters\n");
+                view.ListSortMethods();
+                try
+                {
+                    string key = Console.ReadLine();
+                    model.SetSortMethod(key);
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    error = true;
+                }
+
+                if (!error)
+                {
+                    view.Print(elements);
+                    this.model.SetElementList(elements);
+                    Console.WriteLine("Numbers correctly set.");
+                }
             }
 
         }
@@ -83,26 +99,24 @@ namespace Sorting
                 minimum = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Maximum value: ");
                 maximum = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Set sorting method by typing the letter\n");
+                view.ListSortMethods();
+                string key = Console.ReadLine();
+                model.SetSortMethod(key);
+
+                model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
+                List<int> elements = model.numberGenerator.GenerateRandom();
+                Console.WriteLine("List of generated numbers:");
+                view.Print<int>(elements);
+                model.SetElementList(elements);
+
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                Console.WriteLine("The string cannot be converted to int! Probably its not a number.");
+                Console.WriteLine(e.Message);
                 error = true;
             }
-
-            if (!error)
-            {
-                model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
-
-                List<int> elements = model.numberGenerator.GenerateRandom();
-
-                Console.WriteLine("List of generated numbers:");
-
-                view.Print<int>(elements);
-
-                model.SetElementList(elements);
-            }
-
         }
 
         public void RunController()

@@ -9,12 +9,21 @@ namespace Sorting
 {
     class View
     {
-        //private List<int> elementList;
-
         // Prints an object
         public void Print(object o)
         {
             Console.WriteLine(o);
+        }
+
+        public void ListSortMethods()
+        {
+            String[] names = { "Insertion sort", "Selection sort", "Quicksort", "Merge sort" };
+            String[] chars = { "[i]", "[s]", "[q]", "[m]" };
+            for (int i = 0; i < names.Length; i++)
+            {
+                Console.WriteLine(String.Format("{0, -20} {1, 0}", names[i], chars[i]));
+            }
+            Console.WriteLine();
         }
 
         // Prints a list of objects

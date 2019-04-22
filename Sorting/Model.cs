@@ -70,8 +70,8 @@ namespace Sorting
         }
     }
 
-    // Implementation of sorting method "divide and conquer"
-    class DivideAndConquerSort : ISort
+    // Implementation of merge sort
+    class MergeSort : ISort
     {
         public void SortElements(ref List<int> elementList)
         {
@@ -86,21 +86,28 @@ namespace Sorting
                 SortElements(ref firstHalf);
                 SortElements(ref secondHalf);
 
-                // Merging both halves
+                // Merging sorted halves
+                //int k = 0;
+                //while (k <= firstHalf.Count && i <= secondHalf.Count)
+                //{
+                //    while (firstHalf[k] > secondHalf[i] && i <= secondHalf.Count - 1)
+                //    {
+                //        i++;
+                //    }
+                //    k++;
+                //}
+                secondHalf.Add(Int32.MaxValue);
                 int i = 0;
                 foreach (int element in firstHalf)
                 {
                     while(element > secondHalf[i])
                     {
                         i++;
-                        if (i == secondHalf.Count)
-                        {
-                            break;
-                        }
                     }
                     secondHalf.Insert(i, element);
                     i++;
                 }
+                secondHalf.RemoveAt(secondHalf.Count - 1);
                 elementList = secondHalf;
             }
         }
@@ -115,7 +122,7 @@ namespace Sorting
 
         public String StrategyName()
         {
-            return "Divide And Conquer";
+            return "Merge Sort";
         }
     }
 
@@ -220,7 +227,28 @@ namespace Sorting
             numberGenerator = new NumberGenerator();
             stopwatch = new Stopwatch();
 
-            sortStrategy = new QuickSort();
+            //sortStrategy = new QuickSort();
+        }
+
+        public void SetSortMethod(string methodKey)
+        {
+            switch (methodKey)
+            {
+                case "q":
+                    sortStrategy = new QuickSort();
+                    break;
+                case "s":
+                    sortStrategy = new SelectionSort();
+                    break;
+                case "i":
+                    sortStrategy = new InsertionSort();
+                    break;
+                case "m":
+                    sortStrategy = new MergeSort();
+                    break;
+                default:
+                    throw new Exception("Exception setting sorting method.");
+            }
         }
 
         public void SetElementList(List<int> elementList)
