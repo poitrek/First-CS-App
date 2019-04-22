@@ -69,28 +69,39 @@ namespace Sorting
 
         }
 
+        // Performs input of parameters of random generation
         public void InputRandom()
         {
             Console.WriteLine("Set random-generation parameters");
+            int numberOfElements = 0;
+            int maximum = 0, minimum = 0;
+            try
+            {
+                Console.Write("Number of random elements: ");
+                numberOfElements = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Minimum value: ");
+                minimum = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Maximum value: ");
+                maximum = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("The string cannot be converted to int! Probably its not a number.");
+                error = true;
+            }
 
-            int numberOfElements;
-            int maximum, minimum;
-            Console.Write("Number of random elements: ");
-            numberOfElements = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Minimum value: ");
-            minimum = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Maximum value: ");
-            maximum = Convert.ToInt32(Console.ReadLine());
+            if (!error)
+            {
+                model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
 
-            model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
+                List<int> elements = model.numberGenerator.GenerateRandom();
 
-            List<int> elements = model.numberGenerator.GenerateRandom();
+                Console.WriteLine("List of generated numbers:");
 
-            Console.WriteLine("List of generated numbers:");
+                view.Print<int>(elements);
 
-            view.Print<int>(elements);
-
-            model.SetElementList(elements);
+                model.SetElementList(elements);
+            }
 
         }
 
@@ -100,13 +111,16 @@ namespace Sorting
 
             InputRandom();
 
-            Console.WriteLine();
+            if (!error)
+            {
+                Console.WriteLine();
 
-            model.SortElements();
+                model.SortElements();
 
-            view.ShowResult(model.GetElementList());
+                view.ShowResult(model.GetElementList());
 
-            view.ShowReport(model.stopwatch, model.UsedMethodName());
+                view.ShowReport(model.stopwatch, model.UsedMethodName());
+            }
 
             Console.WriteLine("Program ended. Press any key to exit");
 
