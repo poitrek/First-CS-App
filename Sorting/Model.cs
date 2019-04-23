@@ -39,6 +39,19 @@ namespace Sorting
         }
     }
 
+    class CSharpListSort : ISort
+    {
+        public void SortElements(ref List<int> elementList)
+        {
+            elementList.Sort();
+        }
+
+        public String StrategyName()
+        {
+            return "C# List.Sort()";
+        }
+    }
+
     // Implementation of insertion sort
     class InsertionSort : ISort
     {
@@ -112,13 +125,13 @@ namespace Sorting
             }
         }
 
-        private void SortRange(ref List<int> elementList, int begin, int count)
-        {
-            if (count > 1)
-            {
+        //private void SortRange(ref List<int> elementList, int begin, int count)
+        //{
+        //    if (count > 1)
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         public String StrategyName()
         {
@@ -217,6 +230,21 @@ namespace Sorting
                 }
                 return randomList;
             }
+
+            public List<int> Generate1ToN(int numberOfElements)
+            {
+                List<int> randomList = new List<int>();
+                // An extra element for easier inserting
+                randomList.Add(0);
+                for(int i = 1; i <= numberOfElements; i++)
+                {
+                    int idx = random.Next(i);
+                    randomList.Insert(idx, i);
+                }
+                // Remove the extra element
+                randomList.RemoveAt(randomList.Count - 1);
+                return randomList;
+            }
             
         }
 
@@ -226,8 +254,6 @@ namespace Sorting
         {
             numberGenerator = new NumberGenerator();
             stopwatch = new Stopwatch();
-
-            //sortStrategy = new QuickSort();
         }
 
         public void SetSortMethod(string methodKey)
@@ -245,6 +271,9 @@ namespace Sorting
                     break;
                 case "m":
                     sortStrategy = new MergeSort();
+                    break;
+                case "c":
+                    sortStrategy = new CSharpListSort();
                     break;
                 default:
                     throw new Exception("Exception setting sorting method.");

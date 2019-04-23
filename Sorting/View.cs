@@ -17,11 +17,11 @@ namespace Sorting
 
         public void ListSortMethods()
         {
-            String[] names = { "Insertion sort", "Selection sort", "Quicksort", "Merge sort" };
-            String[] chars = { "[i]", "[s]", "[q]", "[m]" };
+            String[] names = { "Insertion sort", "Selection sort", "Quicksort", "Merge sort", "C# List.Sort() method" };
+            String[] chars = { "[i]", "[s]", "[q]", "[m]", "[c]" };
             for (int i = 0; i < names.Length; i++)
             {
-                Console.WriteLine(String.Format("{0, -20} {1, 0}", names[i], chars[i]));
+                Console.WriteLine(String.Format("{0, -24} {1, 0}", names[i], chars[i]));
             }
             Console.WriteLine();
         }

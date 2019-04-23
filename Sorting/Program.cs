@@ -88,25 +88,23 @@ namespace Sorting
         // Performs input of parameters of random generation
         public void InputRandom()
         {
-            Console.WriteLine("Set random-generation parameters");
-            int numberOfElements = 0;
-            int maximum = 0, minimum = 0;
             try
             {
+                //Console.WriteLine("Set random-generation parameters");
                 Console.Write("Number of random elements: ");
-                numberOfElements = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Minimum value: ");
-                minimum = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Maximum value: ");
-                maximum = Convert.ToInt32(Console.ReadLine());
+                int numberOfElements = Convert.ToInt32(Console.ReadLine());
+                //Console.Write("Minimum value: ");
+                //int minimum = Convert.ToInt32(Console.ReadLine());
+                //Console.Write("Maximum value: ");
+                //int maximum = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine("Set sorting method by typing the letter\n");
                 view.ListSortMethods();
                 string key = Console.ReadLine();
                 model.SetSortMethod(key);
 
-                model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
-                List<int> elements = model.numberGenerator.GenerateRandom();
+                //model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
+                List<int> elements = model.numberGenerator.Generate1ToN(numberOfElements);
                 Console.WriteLine("List of generated numbers:");
                 view.Print<int>(elements);
                 model.SetElementList(elements);
