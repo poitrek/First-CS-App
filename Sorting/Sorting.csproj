@@ -43,13 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Model\CSharpListSort.cs" />
+    <Compile Include="Model\InsertionSort.cs" />
+    <Compile Include="Model\ISort.cs" />
+    <Compile Include="Model\MergeSort.cs" />
+    <Compile Include="Model\Sorter.cs" />
+    <Compile Include="Controller\Program.cs" />
+    <Compile Include="Model\NumberGenerator.cs" />
+    <Compile Include="Model\QuickSort.cs" />
+    <Compile Include="Model\SelectionSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View.cs" />
+    <Compile Include="View\View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

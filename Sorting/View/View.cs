@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace Sorting
+namespace Sorting.View
 {
-    class View
+    class Printer
     {
         // Prints an object
         public void Print(object o)
@@ -45,10 +45,11 @@ namespace Sorting
             this.Print(intList);
         }
 
-        public void ShowReport(Stopwatch stopwatch, String strategyName)
+        public void ShowReport(List<int> elementList, Stopwatch stopwatch, String strategyName)
         {
             double elapsedSeconds = (double)stopwatch.ElapsedMilliseconds / 1000.0;
             Console.WriteLine("Time elapsed: " + elapsedSeconds + " s");
+            Console.WriteLine("Number of elements sorted: " + elementList.Count);
             Console.WriteLine("Used method: " + strategyName);
         }
     }
