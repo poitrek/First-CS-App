@@ -132,7 +132,7 @@ namespace Sorting
 
             ChooseSortingMethod();
 
-            List<int> elements = ReadFromFile("numbers1.txt");
+            List<int> elements = ReadFromFile("numbers2.txt");
 
             //Console.WriteLine("List of loaded numbers:");
             //printer.Print<int>(elements);
@@ -149,7 +149,7 @@ namespace Sorting
 
                 sorter.SortElements();
 
-                printer.ShowResult(sorter.GetElementList());
+                //printer.ShowResult(sorter.GetElementList());
 
                 printer.ShowReport(sorter.GetElementList(), sorter.stopwatch, sorter.UsedMethodName());
             }

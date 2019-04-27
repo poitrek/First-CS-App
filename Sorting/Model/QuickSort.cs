@@ -76,7 +76,7 @@ namespace Sorting.Model
 
         public QuickSort()
         {
-            pivotPicker = new LastElementPivot();
+            pivotPicker = new RandomPivot();
         }
 
         public void SortElements(ref List<int> elementList)
@@ -97,19 +97,25 @@ namespace Sorting.Model
             // Choose pivot using one of the strategies
             int pivot = pivotPicker.PickPivot(elementList);
 
+            // Remove the first occurence of the pivot value
+            elementList.Remove(pivot);
+
             int border = 0;
             for (int i = 0; i < elementList.Count; i++)
             {
-                if (elementList[i] <= pivot)
+                if (elementList[i] < pivot)
                 {
                     Sorter.Swap<int>(ref elementList, i, border);
                     border++;
                 }
             }
 
+            // Insert the missing pivot into the right place
+            elementList.Insert(border, pivot);
+
             // Generating two sub-ranges of the list
             List<int> firstHalf = elementList.GetRange(0, border); // Stack overflow exception
-            List<int> secondHalf = elementList.GetRange(border, elementList.Count - border);
+            List<int> secondHalf = elementList.GetRange(border + 1, elementList.Count - border - 1);
 
 
             /// ============= Previous attempt ===================
@@ -138,11 +144,11 @@ namespace Sorting.Model
             elementList.RemoveRange(0, border);
             elementList.InsertRange(0, firstHalf);
 
-            //elementList.RemoveRange(border + 1, elementList.Count - border - 1);
-            //elementList.InsertRange(border + 1, secondHalf);
+            elementList.RemoveRange(border + 1, elementList.Count - border - 1);
+            elementList.InsertRange(border + 1, secondHalf);
 
-            elementList.RemoveRange(border, elementList.Count - border);
-            elementList.InsertRange(border, secondHalf);
+            //elementList.RemoveRange(border, elementList.Count - border);
+            //elementList.InsertRange(border, secondHalf);
 
         }
 
