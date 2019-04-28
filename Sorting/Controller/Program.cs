@@ -102,7 +102,7 @@ namespace Sorting
                 //int maximum = Convert.ToInt32(Console.ReadLine());
 
                 //model.numberGenerator.setParameters(numberOfElements, minimum, maximum);
-                List<int> elements = sorter.numberGenerator.Generate1ToN(numberOfElements);
+                List<int> elements = sorter.numberGenerator.GenerateRandom1ToN(numberOfElements);
                 Console.WriteLine("List of generated numbers:");
                 printer.Print<int>(elements);
                 sorter.SetElementList(elements);
@@ -132,16 +132,17 @@ namespace Sorting
 
             ChooseSortingMethod();
 
-            List<int> elements = ReadFromFile("numbers2.txt");
+            List<int> elements = ReadFromFile("../../data/numbers_sorted_dsc.txt");
 
             //Console.WriteLine("List of loaded numbers:");
             //printer.Print<int>(elements);
+
             sorter.SetElementList(elements);
 
 
-            //List<int> elements = sorter.numberGenerator.Generate1ToN(100000);
+            //List<int> elements = sorter.numberGenerator.GenerateNTo1(100000);
 
-            //SaveToFile(ref elements, "numbers2.txt");
+            //SaveToFile(ref elements, "numbers_sorted_dsc.txt");
 
             if (!error)
             {

@@ -44,7 +44,8 @@ namespace Sorting.Model
             return randomList;
         }
 
-        public List<int> Generate1ToN(int numberOfElements)
+        // Generates values from 1..N in random order
+        public List<int> GenerateRandom1ToN(int numberOfElements)
         {
             List<int> randomList = new List<int>();
             // An extra element for easier inserting
@@ -59,7 +60,27 @@ namespace Sorting.Model
             return randomList;
         }
 
+        // Generates values from 1..N in ascending order
+        public List<int> Generate1ToN(int numberOfElements)
+        {
+            List<int> list = new List<int>();
+            for (int i = 1; i <= numberOfElements; i++)
+            {
+                list.Add(i);
+            }
+            return list;
+        }
 
+        // Generates values from N..1 (in descending order)
+        public List<int> GenerateNTo1(int numberOfElements)
+        {
+            List<int> list = new List<int>();
+            for (int i = numberOfElements; i >= 1; i--)
+            {
+                list.Add(i);
+            }
+            return list;
+        }
 
     }
 }

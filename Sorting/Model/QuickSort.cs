@@ -147,9 +147,6 @@ namespace Sorting.Model
             elementList.RemoveRange(border + 1, elementList.Count - border - 1);
             elementList.InsertRange(border + 1, secondHalf);
 
-            //elementList.RemoveRange(border, elementList.Count - border);
-            //elementList.InsertRange(border, secondHalf);
-
         }
 
         public String StrategyName()
