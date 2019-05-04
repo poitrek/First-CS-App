@@ -132,7 +132,7 @@ namespace Sorting
 
             ChooseSortingMethod();
 
-            List<int> elements = ReadFromFile("../../data/numbers3.txt");
+            List<int> elements = ReadFromFile("../../data/numbers4.txt");
 
             //Console.WriteLine("List of loaded numbers:");
             //printer.Print<int>(elements);
@@ -140,9 +140,9 @@ namespace Sorting
             sorter.SetElementList(elements);
 
 
-            //List<int> elements = sorter.numberGenerator.GenerateRandom1ToN(500000);
+            //List<int> elements = sorter.numberGenerator.GenerateRandom1ToN(1000000);
 
-            //SaveToFile(ref elements, "numbers3.txt");
+            //SaveToFile(ref elements, "numbers4.txt");
 
             if (!error)
             {

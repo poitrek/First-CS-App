@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\CSharpListSort.cs" />
-    <Compile Include="Model\HeapSort.cs" />
+    <Compile Include="Model\TreeSort.cs" />
     <Compile Include="Model\InsertionSort.cs" />
     <Compile Include="Model\ISort.cs" />
     <Compile Include="Model\MergeSort.cs" />

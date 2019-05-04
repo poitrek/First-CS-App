@@ -43,8 +43,8 @@ namespace Sorting.Model
                 case "c":
                     sortStrategy = new CSharpListSort();
                     break;
-                case "h":
-                    sortStrategy = new HeapSort();
+                case "t":
+                    sortStrategy = new TreeSort();
                     break;
                 default:
                     throw new Exception("Exception setting sorting method.");

@@ -17,8 +17,8 @@ namespace Sorting.View
 
         public void ListSortMethods()
         {
-            String[] names = { "Insertion sort", "Selection sort", "Quicksort", "Merge sort", "C# List.Sort() method", "Heap sort" };
-            String[] chars = { "[i]", "[s]", "[q]", "[m]", "[c]", "[h]" };
+            String[] names = { "Insertion sort", "Selection sort", "Quicksort", "Merge sort", "C# List.Sort() method", "Tree sort" };
+            String[] chars = { "[i]", "[s]", "[q]", "[m]", "[c]", "[t]" };
             for (int i = 0; i < names.Length; i++)
             {
                 Console.WriteLine(String.Format("{0, -24} {1, 0}", names[i], chars[i]));
